@@ -1,0 +1,38 @@
+<div class="bootstrap-wrapper example-card">
+  <div class="container-fluid">
+    <div class="row mt20" *ngIf="selectedQuiz">
+      <div class="col-md-4">
+        <mat-card class="mb20">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{ selectedQuiz.title }}</mat-card-title>
+
+            <mat-card-subtitle>
+              {{ selectedQuiz.category.title }}
+            </mat-card-subtitle>
+          </mat-card-header>
+
+          <mat-card-content>
+            <p class="truncate">
+              {{ selectedQuiz.description }}
+            </p>
+            <span>
+              <h4>Good Luck</h4>
+            </span>
+          </mat-card-content>
+
+          <mat-card-actions>
+            <button
+              mat-button
+              color="accent"
+              class="mr10"
+              (click)="startQuiz()"
+            >
+              Start
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

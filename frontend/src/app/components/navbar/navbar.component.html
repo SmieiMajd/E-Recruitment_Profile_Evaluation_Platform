@@ -1,0 +1,29 @@
+<header>
+  <nav>
+    <ul>
+      <li><a [routerLink]="'/home'">Accueil</a></li>
+      <li><a [routerLink]="'/about'">About</a></li>
+      <li><a [routerLink]="'/contact'">Contact</a></li>
+      <li>
+        <a *ngIf="!isLoggedIn" [routerLink]="'/login'">
+          <span>Login</span>
+        </a>
+      </li>
+      <li>
+        <a *ngIf="!isLoggedIn" [routerLink]="'/signup'">
+          <span>Register</span>
+        </a>
+      </li>
+      <li>
+        <a (click)="logout()" *ngIf="isLoggedIn" [routerLink]="'/home'">
+          <span>Logout</span>
+        </a>
+      </li>
+      <!-- <li>
+        <a *ngIf="isLoggedIn && user" routerLink="/admin/profile">
+          {{ user.username }}
+        </a>
+      </li> -->
+    </ul>
+  </nav>
+</header>

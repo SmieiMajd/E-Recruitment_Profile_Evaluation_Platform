@@ -1,0 +1,13 @@
+.platform-description {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.platform-description h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.platform-description p {
+  margin-bottom: 20px;
+}

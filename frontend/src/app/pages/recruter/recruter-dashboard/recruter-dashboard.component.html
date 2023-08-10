@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>List of Users</title>
+  </head>
+  <body>
+    <div class="container ml20 mt20">
+      <mat-card style="margin-right: 30px">
+        <div class="container mt-3 mb-4 ml5">
+          <div class="col-lg-14 mt-4 mt-lg-0">
+            <div class="row">
+              <div class="search-hero">
+                <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442; Start searching for a Candidate by minimum years of experience">
+                <button class="btn btn-primary" style="margin-top: 10px; margin-left:10px ;" (click)="applyFilter()">Apply Filter</button>
+                <button class="btn btn-secondary mb-3 ml-3" style="margin-top: 10px; margin-left:10px;" (click)="clearFilter()">Clear Filter</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div
+                  class="user-dashboard-info-box table-responsive mb-0 bg-white p-4 shadow-sm"
+                >
+                  <table class="table manage-candidates-top mb-0">
+                    <thead>
+                      <tr>
+                        <th>Candidate Name</th>
+                        <th></th>
+                        <th class="action text-right">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        class="candidates-list"
+                        *ngFor="let candidate of candidates"
+                      >
+                        <td class="title">
+                          <div class="thumb">
+                            <img
+                              [src]="candidate.gender === 'male' ? 'https://bootdey.com/img/Content/avatar/avatar7.png' : 'https://bootdey.com/img/Content/avatar/avatar8.png'"
+                              alt="Admin"
+                              class="rounded-circle"
+                              width="150"
+                            />
+                          </div>
+                          <div class="candidate-list-details">
+                            <div class="candidate-list-info">
+                              <div class="candidate-list-title">
+                                <h3 class="mb-0">
+                                  <a href="#">{{ candidate.username }}</a>
+                                </h3>
+                              </div>
+                              <div class="candidate-list-option">
+                                <ul class="list-unstyled">
+                                  <li>
+                                    <i class="fas fa-filter pr-1"></i>I{{ candidate.diplome }}
+                                  </li>
+                                  <li>
+                                    <i class="fas fa-map-marker-alt pr-1"></i>{{ candidate.adress }}
+                                  </li>
+
+                                  <li><strong><span style="font-size: larger; color: black;">{{ candidate.githubRepos }}- Accomplished projects on GitHub</span></strong></li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="text-center" style="margin-right: 00px">
+                            <mat-icon *ngIf="candidate.sentiment === 'Positive'">insert_emoticon</mat-icon>
+                            <mat-icon *ngIf="candidate.sentiment === 'Negative'">sentiment_very_dissatisfied</mat-icon>
+                          </div>
+                        </td>
+                        <td>
+                          <ul class="list-unstyled mb-0 d-flex justify-content-end action text-right">
+                            <li>
+                              <a (click)="viewProfile(candidate.username)" class="text-primary" data-toggle="tooltip" title="" data-original-title="view">
+                                <i class="far fa-eye"></i>
+                              </a>
+                            </li>
+                          </ul>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </body>
+</html>
+<mat-card>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
+</mat-card>

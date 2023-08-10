@@ -1,0 +1,331 @@
+<mat-card style="margin-left: 430px; margin-right: 430px; margin-top: 70px">
+  <mat-card-content>
+    <div class="formbold-main-wrapper">
+      <div class="formbold-form-wrapper">
+        <img
+          src="../../../assets/signup.PNG"
+          style="margin-right: 50px; margin-bottom: 8px"
+          width="480"
+          height="277"
+        />
+        <div class="flex flex-col items-center">
+          <mat-radio-group
+            [(ngModel)]="selectedProfile"
+            aria-label="Select an option"
+          >
+            <mat-radio-button style="margin-left: 110px" required value="NORMAL"
+              >Candidate</mat-radio-button
+            >
+            <mat-radio-button required value="RECRUTER"
+              >Recruter</mat-radio-button
+            >
+          </mat-radio-group>
+        </div>
+        <form (ngSubmit)="formSubmit()">
+          <!-- Common Fields -->
+
+          <div class="formbold-mb-3">
+            <label for="age" class="formbold-form-label">User name</label>
+            <input
+              required
+              [(ngModel)]="user.userName"
+              name="username"
+              type="text"
+              placeholder="your username "
+              class="formbold-form-input"
+            />
+          </div>
+          <div class="formbold-mb-3">
+            <label for="age" class="formbold-form-label">First name</label>
+            <input
+              required
+              [(ngModel)]="user.fName"
+              name="fName"
+              type="text"
+              placeholder="your first name "
+              class="formbold-form-input"
+            />
+          </div>
+          <div class="formbold-mb-3">
+            <label for="age" class="formbold-form-label">Last name</label>
+            <input
+              required
+              [(ngModel)]="user.lname"
+              name="username"
+              type="text"
+              placeholder="your last name "
+              class="formbold-form-input"
+            />
+          </div>
+          <div class="formbold-mb-3">
+            <label for="age" class="formbold-form-label">Password</label>
+            <div class="formbold-input-wrapper">
+              <input
+                required
+                [(ngModel)]="user.password"
+                name="password"
+                type="password"
+                matInput
+                placeholder="Password"
+                [type]="showPassword ? 'text' : 'password'"
+                class="formbold-form-input"
+              />
+              <button
+                color="primary"
+                matSuffix
+                mat-icon-button
+                [attr.aria-label]="showPassword ? 'Hide' : 'Show'"
+                (click)="showPassword = !showPassword"
+                type="button"
+              >
+                <mat-icon>{{
+                  showPassword ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="formbold-mb-3">
+            <label for="email" class="formbold-form-label">Email</label>
+            <input
+              required
+              [(ngModel)]="user.email"
+              name="email"
+              type="email"
+              placeholder="email"
+              class="formbold-form-input"
+            />
+          </div>
+
+          <!-- Fields for Recruter -->
+          <div *ngIf="selectedProfile === 'RECRUTER'">
+            <div class="formbold-mb-3">
+              <label for="companyName" class="formbold-form-label"
+                >Company Name</label
+              >
+              <input
+                required
+                [(ngModel)]="user.companyName"
+                name="companyName"
+                type="text"
+                placeholder="Your company name"
+                class="formbold-form-input"
+              />
+            </div>
+            <div class="formbold-mb-3">
+              <label for="companyWebsite" class="formbold-form-label"
+                >Company Website</label
+              >
+              <input
+                required
+                [(ngModel)]="user.companyWebSite"
+                name="companyWebsite"
+                type="text"
+                placeholder="Your company website"
+                class="formbold-form-input"
+              />
+            </div>
+          </div>
+
+          <!-- Fields for Candidate -->
+          <div *ngIf="selectedProfile === 'NORMAL'">
+            <div class="formbold-mb-3">
+              <label for="linkedInLink" class="formbold-form-label"
+                >Linkedin</label
+              >
+              <input
+                required
+                [(ngModel)]="user.linkedInLink"
+                name="linkedInLink"
+                type="link"
+                placeholder="linkedin link"
+                class="formbold-form-input"
+              />
+            </div>
+
+            <div class="formbold-mb-3">
+              <label for="githubLink" class="formbold-form-label"
+                >Git_hub</label
+              >
+              <input
+                required
+                [(ngModel)]="user.githubLink"
+                name="githubLink"
+                type="link"
+                placeholder="Git-hub Link"
+                class="formbold-form-input"
+              />
+            </div>
+
+            <div class="formbold-mb-3">
+              <div>
+                <label class="formbold-form-label">Gender</label>
+
+                <select
+                  class="formbold-form-input"
+                  [(ngModel)]="user.gender"
+                  name="gender"
+                  type="text"
+                  placeholder="Phone number"
+                >
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="others">Others</option>
+                </select>
+              </div>
+            </div>
+            <div class="formbold-mb-3">
+              <label for="age" class="formbold-form-label"> Age </label>
+              <input
+                [(ngModel)]="user.age"
+                name="age"
+                type="number"
+                placeholder="Age"
+                class="formbold-form-input"
+              />
+            </div>
+
+            <div class="formbold-mb-3 formbold-input-wrapp">
+              <label for="phone" class="formbold-form-label"> Phone </label>
+
+              <div>
+                <input
+                  [(ngModel)]="user.phone"
+                  name="phone"
+                  type="text"
+                  placeholder="Phone number"
+                  class="formbold-form-input"
+                />
+              </div>
+            </div>
+            <!--
+            <div class="formbold-mb-3">
+              <label for="age" class="formbold-form-label">
+                Applying for Position:
+              </label>
+              <input type="text" name="" id="" class="formbold-form-input" />
+            </div>-->
+            <div>
+              <label class="formbold-form-label mb-3">Qualification</label>
+
+              <select
+                class="formbold-form-input"
+                [(ngModel)]="user.diplome"
+                name="Qualification"
+                type="text"
+                placeholder="Qualification"
+              >
+                <option value="bac">Baccalaureate</option>
+                <option value="Bac+1">Bac+1</option>
+                <option value="Bac+2">Bac+2</option>
+                <option value="Licence">Licence</option>
+                <option value="M1">Master degree M1</option>
+                <option value="M2">Master degree M2</option>
+                <option value="PhD ">PhD</option>
+                <option value="Engineer">Engineer</option>
+                <option value="others">Other</option>
+              </select>
+            </div>
+            <div class="formbold-mb-3">
+              <label for="yearsOfExperiences" class="formbold-form-label">
+                Years Of Experience
+              </label>
+              <input
+                [(ngModel)]="user.yearsOfExperience"
+                name="yearsOfExperiences"
+                type="number"
+                placeholder="years Of Experience"
+                class="formbold-form-input"
+              />
+            </div>
+
+            <!--  <div class="formbold-mb-3">
+             <label for="dob" class="formbold-form-label">
+                When can you start?
+              </label>
+              <input
+                type="date"
+                name="dob"
+                id="dob"
+                class="formbold-form-input"
+              />
+            </div>  -->
+
+            <div>
+              <label for="region" class="formbold-form-label"> Region </label>
+
+              <select
+                [(ngModel)]="user.adress"
+                name="adress"
+                class="formbold-form-input formbold-mb-3"
+              >
+                <option value="" disabled selected>Select your region</option>
+                <option value="1000 , ARIANA">Ariana</option>
+                <option value=" 9000 ,BEJA">Béja</option>
+                <option value="2013 , BEN AROUS">Ben Arous</option>
+                <option value="7000 , BIZERTE">Bizerte</option>
+                <option value="6000 ,  GABES">Gabès</option>
+                <option value="2100 , GAFSA">Gafsa</option>
+                <option value="8100 , JENDOUBA">Jendouba</option>
+                <option value="3100 , KAIROUAN">Kairouan</option>
+                <option value="1200 , KASSERINE">Kasserine</option>
+                <option value="4200 , KEBILI">Kébili</option>
+                <option value="7100 , KEF">Le Kef</option>
+                <option value="5100 , MAHDIA">Mahdia</option>
+                <option value="2010 , MANOUBA">Manouba</option>
+                <option value="4100 , MEDENINE">Médenine</option>
+                <option value="5000 , MONASTIR">Monastir</option>
+                <option value="8000 , NABEUL">Nabeul</option>
+                <option value="3000 , SFAX">Sfax</option>
+                <option value="9100 , SIDI BOUZID">Sidi Bouzid</option>
+                <option value="6100 , SILIANA">Siliana</option>
+                <option value="4000 , SOUSSE">Sousse</option>
+                <option value="3200 , TATAOUINE">Tataouine</option>
+                <option value="2200 , TOZEUR">Tozeur</option>
+                <option value="1001 , TUNIS">Tunis</option>
+                <option value="1100 , ZAGHOUAN">Zaghouan</option>
+              </select>
+            </div>
+
+            <div class="formbold-mb-3">
+              <label for="message" class="formbold-form-label">
+                About Me
+              </label>
+              <textarea
+                [(ngModel)]="user.aboutMe"
+                name="aboutMe"
+                type="text"
+                class="formbold-form-input"
+              ></textarea>
+            </div>
+
+            <div class="formbold-mb-3">
+              <label for="message" class="formbold-form-label">
+                Cover Letter
+              </label>
+              <textarea
+                [(ngModel)]="user.coverLetter"
+                name="coverLetter"
+                type="text"
+                class="formbold-form-input"
+              ></textarea>
+            </div>
+
+            <div class="formbold-form-file-flex">
+              <label for="upload" class="formbold-form-label">
+                Upload Resume
+              </label>
+              <input
+                (change)="upoladfile()"
+                type="file"
+                name="upload"
+                class="formbold-form-file"
+              />
+            </div>
+          </div>
+          <button type="submit" class="formbold-btn">Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

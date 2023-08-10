@@ -1,0 +1,59 @@
+<mat-card style="margin-left: 430px; margin-right: 430px; margin-top: 70px">
+  <mat-card-content>
+    <div class="formbold-main-wrapper">
+      <div class="formbold-form-wrapper">
+        <img
+          src="../../../assets/signup.PNG"
+          style="margin-right: 50px; margin-bottom: 8px"
+          width="480"
+          height="277"
+        />
+
+        <form (ngSubmit)="formSubmit()">
+          <!-- Common Fields -->
+
+          <div class="formbold-mb-3">
+            <label for="age" class="formbold-form-label">User name</label>
+            <input
+              required
+              [(ngModel)]="loginData.username"
+              name="username"
+              type="text"
+              placeholder="your username "
+              class="formbold-form-input"
+            />
+          </div>
+          <div class="formbold-mb-3">
+            <label for="age" class="formbold-form-label">Password</label>
+            <div class="formbold-input-wrapper">
+              <input
+              required
+              [(ngModel)]="loginData.password"
+              name="password"
+              type="password"
+              matInput
+              placeholder="Password"
+              [type]="showPassword ? 'text' : 'password'"
+                class="formbold-form-input"
+              />
+              <button
+               color="primary"
+                matSuffix
+                mat-icon-button
+                [attr.aria-label]="showPassword ? 'Hide' : 'Show'"
+                (click)="showPassword = !showPassword"
+                type="button"
+              >
+                <mat-icon>{{
+                  showPassword ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" class="formbold-btn">Sign In</button>
+        </form>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

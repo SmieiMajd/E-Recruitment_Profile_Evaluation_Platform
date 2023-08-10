@@ -1,0 +1,12 @@
+<ul class="user-list">
+  <ng-container *ngFor="let user of users">
+    <li class="user-item" *ngIf="user.authorities[0].authority !== 'ADMIN'">
+      <span class="user-name">{{ user.userName }}</span>
+      <div class="text-center" >
+      <button  mat-stroked-button color="primary"  style="margin-left: 980px" >{{ user.authorities[0].authority }}</button>
+    </div>
+      <button class="delete-button" (click)="deleteUser(user.id)">Delete</button>
+    </li>
+  </ng-container>
+</ul>
+
